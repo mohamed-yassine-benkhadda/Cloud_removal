@@ -123,10 +123,8 @@ def detect_cloud(path = None, paths = None, plots = True):
         img = np.asarray(img).transpose((2,0,1))
     tensor = torch.from_numpy(img)
     unet = Unet()
-    print(unet)
     unet_stat = torch.load('unet.pth', map_location=torch.device('cpu'))
     unet.load_state_dict(unet_stat)
-    print(unet)
     y = unet(tensor[None, :].float())
     if plots == True:
         fig, (ax1, ax2) = plt.subplots(1,2, figsize=(15,15))
