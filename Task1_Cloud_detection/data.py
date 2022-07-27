@@ -1,3 +1,36 @@
+import os
+import sys
+import matplotlib.pyplot as plt
+from sklearn.metrics import roc_curve, auc
+from scipy import ndimage
+from PIL import Image, ImageEnhance
+import numpy as np
+import cv2
+from sklearn.metrics import accuracy_score
+import torch
+from torch.utils.data import Dataset, DataLoader, sampler
+from numpy import vstack
+import torch.nn as nn
+from torch.optim import Adam, Adagrad
+from torch.nn import BCELoss
+from tqdm import tqdm
+import torchvision.transforms as transforms
+from torch.optim import SGD
+from torch import Tensor
+from torch.utils.tensorboard import SummaryWriter
+import torch.nn.functional as F
+import torch.optim as optim
+from pathlib import Path
+from PIL import Image
+from skimage import filters
+from skimage import exposure
+import skimage
+import matplotlib.pyplot as plt
+import re
+import random
+import math
+from datetime import datetime
+
 # Dataset Class
 class CloudDataset(Dataset):
     def __init__(self, r_dir, base_dir,train=True,pytorch=True):
@@ -62,20 +95,23 @@ class CloudDataset(Dataset):
         return random.shuffle(self.files)
 
 class _Data(Dataset):
-  def __init__(self, files):
+  def __init__(self, files , train= True):
       self.files = files
       self.images = []
       for f in files:
-          pic_red = cv2.imread(str(f["red"]))[...,0]
-          pic_green = cv2.imread(str(f["green"]))[...,0]
-          pic_blue = cv2.imread(str(f["blue"]))[...,0]
-          pic_nir = cv2.imread(str(f["nir"]))[...,0]
-          pic_gt = cv2.imread(str(f["gt"]))[...,0]
-          raw_rgb = np.stack(
-              [pic_red, pic_green, pic_blue, pic_nir]
-              , axis=2)
-          img = Image.fromarray((raw_rgb).astype(np.uint8))
-          self.images.append((torch.from_numpy(np.asarray(img).transpose((2,0,1))),torch.from_numpy(pic_gt)))
+        pic_red = cv2.imread(str(f["red"]))[...,0]
+        pic_green = cv2.imread(str(f["green"]))[...,0]
+        pic_blue = cv2.imread(str(f["blue"]))[...,0]
+        pic_nir = cv2.imread(str(f["nir"]))[...,0]
+        if train:
+            pic_gt = cv2.imread(str(f["gt"]))[...,0]
+        raw_rgb = np.stack(
+            [pic_red, pic_green, pic_blue, pic_nir]
+            , axis=2)
+        img = Image.fromarray((raw_rgb).astype(np.uint8))
+        if train:
+            self.images.append((torch.from_numpy(np.asarray(img).transpose((2,0,1))),torch.from_numpy(pic_gt)))
+        self.images.append((torch.from_numpy(np.asarray(img).transpose((2,0,1)))))
       print("Done ✅")
   def __getitem__(self,i):
       return self.images[i]
