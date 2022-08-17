@@ -1,12 +1,12 @@
 import os
 import sys
 import matplotlib.pyplot as plt
-from sklearn.metrics import roc_curve, auc
-from scipy import ndimage
+# from sklearn.metrics import roc_curve, auc
+# from scipy import ndimage
 from PIL import Image, ImageEnhance
 import numpy as np
 import cv2
-from sklearn.metrics import accuracy_score
+# from sklearn.metrics import accuracy_score
 import torch
 from torch.utils.data import Dataset, DataLoader, sampler
 from numpy import vstack
@@ -14,17 +14,17 @@ import torch.nn as nn
 from torch.optim import Adam, Adagrad
 from torch.nn import BCELoss
 from tqdm import tqdm
-import torchvision.transforms as transforms
+# import torchvision.transforms as transforms
 from torch.optim import SGD
 from torch import Tensor
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 import torch.nn.functional as F
 import torch.optim as optim
 from pathlib import Path
 from PIL import Image
-from skimage import filters
-from skimage import exposure
-import skimage
+# from skimage import filters
+# from skimage import exposure
+# import skimage
 import matplotlib.pyplot as plt
 import re
 import random
