@@ -1,0 +1,2 @@
+Task2_image_inpainting/lama/big_lama filter=lfs diff=lfs merge=lfs -text
+Task2_image_inpainting/lama/big_lama/* filter=lfs diff=lfs merge=lfs -text
