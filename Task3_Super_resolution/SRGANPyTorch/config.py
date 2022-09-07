@@ -22,7 +22,7 @@ random.seed(0)
 torch.manual_seed(0)
 np.random.seed(0)
 # Use GPU for training by default
-device = torch.device("cuda", 0)
+device = torch.device("cpu", 0)
 # Turning on when the image size does not change during training can speed up training
 cudnn.benchmark = True
 # When evaluating the performance of the SR model, whether to verify only the Y channel image data
@@ -30,7 +30,7 @@ only_test_y_channel = True
 # Image magnification factor
 upscale_factor = 4
 # Current configuration parameter method
-mode = "train_srresnet"
+mode = "test"
 # Experiment name, easy to save weights and log files
 exp_name = "SRResNet_baseline"
 

@@ -37,6 +37,7 @@ LOGGER = logging.getLogger(__name__)
 
 @hydra.main(config_path='../configs/prediction', config_name='default.yaml')
 def main(predict_config: OmegaConf):
+    print("here")
     try:
         register_debug_signal_handlers()  # kill -10 <pid> will result in traceback dumped into log
 
