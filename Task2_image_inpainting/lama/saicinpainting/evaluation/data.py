@@ -10,10 +10,12 @@ import torch.nn.functional as F
 
 
 def load_image(fname, mode='RGB', return_orig=False):
+    print(fname)
     img = np.array(Image.open(fname).convert(mode))
     if img.ndim == 3:
         img = np.transpose(img, (2, 0, 1))
     out_img = img.astype('float32') / 255
+    print(fname, out_img.shape)
     if return_orig:
         return out_img, img
     else:
@@ -70,7 +72,7 @@ class InpaintingDataset(Dataset):
         image = load_image(self.img_filenames[i], mode='RGB')
         mask = load_image(self.mask_filenames[i], mode='L')
         result = dict(image=image, mask=mask[None, ...])
-
+        print(result)
         if self.scale_factor is not None:
             result['image'] = scale_image(result['image'], self.scale_factor)
             result['mask'] = scale_image(result['mask'], self.scale_factor, interpolation=cv2.INTER_NEAREST)

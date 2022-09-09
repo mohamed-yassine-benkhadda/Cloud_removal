@@ -7,10 +7,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from saicinpainting.training.modules.base import get_activation, BaseDiscriminator
-from saicinpainting.training.modules.spatial_transform import LearnableSpatialTransformWrapper
-from saicinpainting.training.modules.squeeze_excitation import SELayer
-from saicinpainting.utils import get_shape
+from Task2_image_inpainting.lama.saicinpainting.training.modules.base import get_activation, BaseDiscriminator
+from Task2_image_inpainting.lama.saicinpainting.training.modules.spatial_transform import LearnableSpatialTransformWrapper
+from Task2_image_inpainting.lama.saicinpainting.training.modules.squeeze_excitation import SELayer
+from Task2_image_inpainting.lama.saicinpainting.utils import get_shape
 
 
 class FFCSE_block(nn.Module):

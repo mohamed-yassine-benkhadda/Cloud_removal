@@ -4,11 +4,11 @@ import os
 
 import pandas as pd
 
-from saicinpainting.evaluation.data import PrecomputedInpaintingResultsDataset
-from saicinpainting.evaluation.evaluator import InpaintingEvaluator, lpips_fid100_f1
-from saicinpainting.evaluation.losses.base_loss import SegmentationAwareSSIM, \
+from Task2_image_inpainting.lama.saicinpainting.evaluation.data import PrecomputedInpaintingResultsDataset
+from Task2_image_inpainting.lama.saicinpainting.evaluation.evaluator import InpaintingEvaluator, lpips_fid100_f1
+from Task2_image_inpainting.lama.saicinpainting.evaluation.losses.base_loss import SegmentationAwareSSIM, \
     SegmentationClassStats, SSIMScore, LPIPSScore, FIDScore, SegmentationAwareLPIPS, SegmentationAwareFID
-from saicinpainting.evaluation.utils import load_yaml
+from Task2_image_inpainting.lama.saicinpainting.evaluation.utils import load_yaml
 
 
 def main(args):

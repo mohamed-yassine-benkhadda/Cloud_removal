@@ -1,4 +1,4 @@
-from saicinpainting.training.visualizers.base import BaseVisualizer
+from Task2_image_inpainting.lama.saicinpainting.training.visualizers.base import BaseVisualizer
 
 
 class NoopVisualizer(BaseVisualizer):

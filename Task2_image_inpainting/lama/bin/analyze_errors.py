@@ -9,10 +9,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from joblib import Parallel, delayed
 
-from saicinpainting.evaluation.data import PrecomputedInpaintingResultsDataset, load_image
-from saicinpainting.evaluation.losses.fid.inception import InceptionV3
-from saicinpainting.evaluation.utils import load_yaml
-from saicinpainting.training.visualizers.base import visualize_mask_and_images
+from Task2_image_inpainting.lama.saicinpainting.evaluation.data import PrecomputedInpaintingResultsDataset, load_image
+from Task2_image_inpainting.lama.saicinpainting.evaluation.losses.fid.inception import InceptionV3
+from Task2_image_inpainting.lama.saicinpainting.evaluation.utils import load_yaml
+from Task2_image_inpainting.lama.saicinpainting.training.visualizers.base import visualize_mask_and_images
 
 
 def draw_score(img, score):

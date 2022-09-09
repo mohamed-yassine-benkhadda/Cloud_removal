@@ -31,7 +31,7 @@ import random
 import math
 from datetime import datetime
 # from unet import Unet
-from data import CloudDataset, _Data
+from Task1_Cloud_detection.data import CloudDataset, _Data
 
 
 class Unet(nn.Module):
@@ -96,42 +96,20 @@ def predb_to_mask(predb, idx):
     p = torch.functional.F.softmax(predb[idx], 0)
     return p.argmax(0).cpu()
 
-def detect_cloud(path = None, paths = None, plots = True):
-    if path ==  None and len(paths) != 4:
-        return torch.zeros((384, 384, 2))
-    if path != None:
-        img = cv2.imread(path)
-        img.thumbnail((384, 384))
-        img = np.asarray(img)
-    if len(paths) == 4:
-        pic_red = Image.fromarray(cv2.imread(paths[0])[...,0])
-        pic_red.thumbnail((384, 384))
-        pic_red = np.asarray(pic_red)
-        pic_green = Image.fromarray(cv2.imread(paths[1])[...,0])
-        pic_green.thumbnail((384, 384))
-        pic_green = np.asarray(pic_green)
-        pic_blue = Image.fromarray(cv2.imread(paths[2])[...,0])
-        pic_blue.thumbnail((384, 384))
-        pic_blue = np.asarray(pic_blue)
-        pic_nir = Image.fromarray(cv2.imread(paths[3])[...,0])
-        pic_nir.thumbnail((384, 384))
-        pic_nir = np.asarray(pic_nir)
-        raw = np.stack(
-              [pic_red, pic_green, pic_blue, pic_nir]
-              , axis=2)
-        img = Image.fromarray((raw).astype(np.uint8))
-        img = np.asarray(img).transpose((2,0,1))
+def detect_cloud(img, plots = True):
+    
     tensor = torch.from_numpy(img)
+    print(tensor.shape)
     unet = Unet()
-    unet_stat = torch.load('unet.pth', map_location=torch.device('cpu'))
+    unet_stat = torch.load('Task1_Cloud_detection/unet.pth', map_location=torch.device('cpu'))
     unet.load_state_dict(unet_stat)
     y = unet(tensor[None, :].float())
-    if plots == True:
-        fig, (ax1, ax2) = plt.subplots(1,2, figsize=(15,15))
-        ax1.imshow(tensor.cpu().numpy().transpose((1,2,0))[..., 0:3])
-        ax1.axis('off')
-        ax2.imshow(predb_to_mask(y,0))
-        ax2.axis('off')
+    print(predb_to_mask(y, 0).shape)
+    pi = Image.fromarray(predb_to_mask(y, 0).numpy() * 255,'P')
+    # pi.save('result.png')
+    # im = Image.fromarray(predb_to_mask(y, 0))
+    pi.save("Task2_image_inpainting/lama/output/pic_mask.png")
+    # cv2.imwrite("Task2_image_inpainting/lama/output/pic_mask.png", np.expand_dims(predb_to_mask(y, 0), axis = 0))
     return y
 
 

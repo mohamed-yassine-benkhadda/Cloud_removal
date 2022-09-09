@@ -1,0 +1,11 @@
+indir: ../../../Task2_image_inpainting/lama/output
+outdir: ../../../Task2_image_inpainting/lama/output
+model:
+  path: ../../../Task2_image_inpainting/lama/biglama/biglama
+  checkpoint: best.ckpt
+dataset:
+  kind: default
+  img_suffix: .png
+  pad_out_to_modulo: 8
+device: cpu
+out_key: inpainted

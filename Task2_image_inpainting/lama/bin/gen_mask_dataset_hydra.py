@@ -11,9 +11,9 @@ import PIL.Image as Image
 import numpy as np
 from joblib import Parallel, delayed
 
-from saicinpainting.evaluation.masks.mask import SegmentationMask, propose_random_square_crop
-from saicinpainting.evaluation.utils import load_yaml, SmallMode
-from saicinpainting.training.data.masks import MixedMaskGenerator
+from Task2_image_inpainting.lama.saicinpainting.evaluation.masks.mask import SegmentationMask, propose_random_square_crop
+from Task2_image_inpainting.lama.saicinpainting.evaluation.utils import load_yaml, SmallMode
+from Task2_image_inpainting.lama.saicinpainting.training.data.masks import MixedMaskGenerator
 
 
 class MakeManyMasksWrapper:

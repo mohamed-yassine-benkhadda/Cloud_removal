@@ -14,10 +14,10 @@ from skimage.feature import canny
 from skimage.transform import rescale, resize
 from torch.utils.data import Dataset, IterableDataset, DataLoader, DistributedSampler, ConcatDataset
 
-from saicinpainting.evaluation.data import InpaintingDataset as InpaintingEvaluationDataset, \
+from Task2_image_inpainting.lama.saicinpainting.evaluation.data import InpaintingDataset as InpaintingEvaluationDataset, \
     OurInpaintingDataset as OurInpaintingEvaluationDataset, ceil_modulo, InpaintingEvalOnlineDataset
-from saicinpainting.training.data.aug import IAAAffine2, IAAPerspective2
-from saicinpainting.training.data.masks import get_mask_generator
+from Task2_image_inpainting.lama.saicinpainting.training.data.aug import IAAAffine2, IAAPerspective2
+from Task2_image_inpainting.lama.saicinpainting.training.data.masks import get_mask_generator
 
 LOGGER = logging.getLogger(__name__)
 
@@ -211,6 +211,7 @@ def make_default_train_dataloader(indir, kind='default', out_size=512, mask_gen_
     transform = get_transforms(transform_variant, out_size)
 
     if kind == 'default':
+        print("kind")
         dataset = InpaintingTrainDataset(indir=indir,
                                          mask_generator=mask_generator,
                                          transform=transform,

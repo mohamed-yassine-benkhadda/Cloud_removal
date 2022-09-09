@@ -6,8 +6,8 @@ import cv2
 import numpy as np
 import tqdm
 
-from saicinpainting.evaluation.data import PrecomputedInpaintingResultsDataset
-from saicinpainting.evaluation.utils import load_yaml
+from Task2_image_inpainting.lama.saicinpainting.evaluation.data import PrecomputedInpaintingResultsDataset
+from Task2_image_inpainting.lama.saicinpainting.evaluation.utils import load_yaml
 
 
 def main(args):

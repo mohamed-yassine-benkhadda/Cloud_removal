@@ -4,12 +4,12 @@ import torch
 import torch.nn.functional as F
 from omegaconf import OmegaConf
 
-from saicinpainting.training.data.datasets import make_constant_area_crop_params
-from saicinpainting.training.losses.distance_weighting import make_mask_distance_weighter
-from saicinpainting.training.losses.feature_matching import feature_matching_loss, masked_l1_loss
-from saicinpainting.training.modules.fake_fakes import FakeFakesGenerator
-from saicinpainting.training.trainers.base import BaseInpaintingTrainingModule, make_multiscale_noise
-from saicinpainting.utils import add_prefix_to_keys, get_ramp
+from Task2_image_inpainting.lama.saicinpainting.training.data.datasets import make_constant_area_crop_params
+from Task2_image_inpainting.lama.saicinpainting.training.losses.distance_weighting import make_mask_distance_weighter
+from Task2_image_inpainting.lama.saicinpainting.training.losses.feature_matching import feature_matching_loss, masked_l1_loss
+from Task2_image_inpainting.lama.saicinpainting.training.modules.fake_fakes import FakeFakesGenerator
+from Task2_image_inpainting.lama.saicinpainting.training.trainers.base import BaseInpaintingTrainingModule, make_multiscale_noise
+from Task2_image_inpainting.lama.saicinpainting.utils import add_prefix_to_keys, get_ramp
 
 LOGGER = logging.getLogger(__name__)
 
