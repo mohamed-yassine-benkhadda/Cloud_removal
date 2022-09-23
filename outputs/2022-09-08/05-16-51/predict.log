@@ -1,0 +1,6 @@
+[2022-09-08 05:16:51,672][Task2_image_inpainting.lama.bin.predict][CRITICAL] - Prediction failed due to [Errno 2] No such file or directory: 'big-lama\\config.yaml':
+Traceback (most recent call last):
+  File "c:\Users\myben\OneDrive\Documents\stage\Cloud_removal\Task2_image_inpainting\lama\bin\predict.py", line 45, in main
+    with open(train_config_path, 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'big-lama\\config.yaml'
+

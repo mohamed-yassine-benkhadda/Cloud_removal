@@ -1,0 +1,11 @@
+[2022-09-08 05:16:17,073][Task2_image_inpainting.lama.saicinpainting.utils][WARNING] - Setting signal 1 handler <function print_traceback_handler at 0x000002479CDFE280>
+[2022-09-08 05:16:17,079][Task2_image_inpainting.lama.bin.predict][CRITICAL] - Prediction failed due to invalid signal value:
+Traceback (most recent call last):
+  File "c:\Users\myben\OneDrive\Documents\stage\Cloud_removal\Task2_image_inpainting\lama\bin\predict.py", line 41, in main
+    register_debug_signal_handlers()  # kill -10 <pid> will result in traceback dumped into log
+  File "c:\Users\myben\OneDrive\Documents\stage\Cloud_removal\Task2_image_inpainting\lama\saicinpainting\utils.py", line 109, in register_debug_signal_handlers
+    signal.signal(sig, handler)
+  File "C:\Users\myben\AppData\Local\Programs\Python\Python38\lib\signal.py", line 47, in signal
+    handler = _signal.signal(_enum_to_int(signalnum), _enum_to_int(handler))
+ValueError: invalid signal value
+
